@@ -39,7 +39,7 @@ client.on_disconnect = on_disconnect
 client.on_subscribe = on_subscribe
 client.on_message = on_message
 # address : localhost, port: 1883 에 연결
-client.connect('localhost', 1883)
+client.connect('10.100.207.19', 1883)
 # common topic 으로 메세지 발행
-client.subscribe('inTopic', 1)
+client.subscribe('LED', 1)
 client.loop_forever()

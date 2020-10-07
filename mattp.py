@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 mqttc = mqtt.Client()
-mqttc.connect("localhost", 1883, 60)
+mqttc.connect("10.100.207.19", 1883, 60)
 mqttc.loop_start()
 
 led = {'name' :'LED pin', 'state' : 'ON'}
@@ -19,12 +19,12 @@ def main():
 @app.route("/LED/<action>")
 def action(action):
     if action == "on":
-        mqttc.publish("inTopic", "1")
+        mqttc.publish("LED", "1")
         led['state'] = "ON"
         message = "LED on. "
     
     if action == "off":
-        mqttc.publish("inTopic", "0")
+        mqttc.publish("LED", "0")
         led['state'] = "OFF"
         message = "LED off. "
     
